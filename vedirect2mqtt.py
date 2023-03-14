@@ -237,38 +237,41 @@ def mppt_mqtt_publish():
     mppt1_process_data()
     mppt2_process_data()
 
-    # send MPPT1
-    mqtt_client.publish(ROOT_TOPIC + "/1/Ubat", mppt1_values["Ubat"])
-    mqtt_client.publish(ROOT_TOPIC + "/1/Ibat", mppt1_values["Ibat"])
-    mqtt_client.publish(ROOT_TOPIC + "/1/Pbat", mppt1_values["Pbat"])
-    mqtt_client.publish(ROOT_TOPIC + "/1/Upv", mppt1_values["Upv"])
-    mqtt_client.publish(ROOT_TOPIC + "/1/Ppv", mppt1_values["Ppv"])
-    mqtt_client.publish(ROOT_TOPIC + "/1/Iload", mppt1_values["Iload"])
-    mqtt_client.publish(ROOT_TOPIC + "/1/Pload", mppt1_values["Pload"])
-    mqtt_client.publish(ROOT_TOPIC + "/1/Etoday", mppt1_values["Etoday"])
-    mqtt_client.publish(ROOT_TOPIC + "/1/Pmaxtoday", mppt1_values["Pmaxtoday"])
-    mqtt_client.publish(ROOT_TOPIC + "/1/State", mppt1_values["State"])
+    if (mppt1_values["Ubat"]>5):
+        # send MPPT1
+        mqtt_client.publish(ROOT_TOPIC + "/1/Ubat", mppt1_values["Ubat"])
+        mqtt_client.publish(ROOT_TOPIC + "/1/Ibat", mppt1_values["Ibat"])
+        mqtt_client.publish(ROOT_TOPIC + "/1/Pbat", mppt1_values["Pbat"])
+        mqtt_client.publish(ROOT_TOPIC + "/1/Upv", mppt1_values["Upv"])
+        mqtt_client.publish(ROOT_TOPIC + "/1/Ppv", mppt1_values["Ppv"])
+        mqtt_client.publish(ROOT_TOPIC + "/1/Iload", mppt1_values["Iload"])
+        mqtt_client.publish(ROOT_TOPIC + "/1/Pload", mppt1_values["Pload"])
+        mqtt_client.publish(ROOT_TOPIC + "/1/Etoday", mppt1_values["Etoday"])
+        mqtt_client.publish(ROOT_TOPIC + "/1/Pmaxtoday", mppt1_values["Pmaxtoday"])
+        mqtt_client.publish(ROOT_TOPIC + "/1/State", mppt1_values["State"])
 
-    # send MPPT2
-    mqtt_client.publish(ROOT_TOPIC + "/2/Ubat", mppt2_values["Ubat"])
-    mqtt_client.publish(ROOT_TOPIC + "/2/Ibat", mppt2_values["Ibat"])
-    mqtt_client.publish(ROOT_TOPIC + "/2/Pbat", mppt2_values["Pbat"])
-    mqtt_client.publish(ROOT_TOPIC + "/2/Upv", mppt2_values["Upv"])
-    mqtt_client.publish(ROOT_TOPIC + "/2/Ppv", mppt2_values["Ppv"])
-    mqtt_client.publish(ROOT_TOPIC + "/2/Iload", mppt2_values["Iload"])
-    mqtt_client.publish(ROOT_TOPIC + "/2/Pload", mppt2_values["Pload"])
-    mqtt_client.publish(ROOT_TOPIC + "/2/Etoday", mppt2_values["Etoday"])
-    mqtt_client.publish(ROOT_TOPIC + "/2/Pmaxtoday", mppt2_values["Pmaxtoday"])
-    mqtt_client.publish(ROOT_TOPIC + "/2/State", mppt2_values["State"])
+    if (mppt2_values["Ubat"]>5):
+        # send MPPT2
+        mqtt_client.publish(ROOT_TOPIC + "/2/Ubat", mppt2_values["Ubat"])
+        mqtt_client.publish(ROOT_TOPIC + "/2/Ibat", mppt2_values["Ibat"])
+        mqtt_client.publish(ROOT_TOPIC + "/2/Pbat", mppt2_values["Pbat"])
+        mqtt_client.publish(ROOT_TOPIC + "/2/Upv", mppt2_values["Upv"])
+        mqtt_client.publish(ROOT_TOPIC + "/2/Ppv", mppt2_values["Ppv"])
+        mqtt_client.publish(ROOT_TOPIC + "/2/Iload", mppt2_values["Iload"])
+        mqtt_client.publish(ROOT_TOPIC + "/2/Pload", mppt2_values["Pload"])
+        mqtt_client.publish(ROOT_TOPIC + "/2/Etoday", mppt2_values["Etoday"])
+        mqtt_client.publish(ROOT_TOPIC + "/2/Pmaxtoday", mppt2_values["Pmaxtoday"])
+        mqtt_client.publish(ROOT_TOPIC + "/2/State", mppt2_values["State"])
 
-    # send commulated values
-    mqtt_client.publish(ROOT_TOPIC + "/sum/Ibat", mppt1_values["Ibat"] + mppt2_values["Ibat"])
-    mqtt_client.publish(ROOT_TOPIC + "/sum/Pbat", mppt1_values["Pbat"] + mppt2_values["Pbat"])
-    mqtt_client.publish(ROOT_TOPIC + "/sum/Ppv", mppt1_values["Ppv"] + mppt2_values["Ppv"])
-    mqtt_client.publish(ROOT_TOPIC + "/sum/Iload", mppt1_values["Iload"] + mppt2_values["Iload"])
-    mqtt_client.publish(ROOT_TOPIC + "/sum/Pload", mppt1_values["Pload"] + mppt2_values["Pload"])
-    mqtt_client.publish(ROOT_TOPIC + "/sum/Etoday", mppt1_values["Etoday"] + mppt2_values["Etoday"])
-    mqtt_client.publish(ROOT_TOPIC + "/sum/Pmaxtoday", mppt1_values["Pmaxtoday"] + mppt2_values["Pmaxtoday"])
+    if (mppt1_values["Ubat"]>5):
+        # send commulated values
+        mqtt_client.publish(ROOT_TOPIC + "/sum/Ibat", mppt1_values["Ibat"] + mppt2_values["Ibat"])
+        mqtt_client.publish(ROOT_TOPIC + "/sum/Pbat", mppt1_values["Pbat"] + mppt2_values["Pbat"])
+        mqtt_client.publish(ROOT_TOPIC + "/sum/Ppv", mppt1_values["Ppv"] + mppt2_values["Ppv"])
+        mqtt_client.publish(ROOT_TOPIC + "/sum/Iload", mppt1_values["Iload"] + mppt2_values["Iload"])
+        mqtt_client.publish(ROOT_TOPIC + "/sum/Pload", mppt1_values["Pload"] + mppt2_values["Pload"])
+        mqtt_client.publish(ROOT_TOPIC + "/sum/Etoday", mppt1_values["Etoday"] + mppt2_values["Etoday"])
+        mqtt_client.publish(ROOT_TOPIC + "/sum/Pmaxtoday", mppt1_values["Pmaxtoday"] + mppt2_values["Pmaxtoday"])
 
 if __name__ == '__main__':
     # MQTT-client

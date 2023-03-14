@@ -28,4 +28,4 @@ Clone this repository to the folder **/opt/pv_mqtt_controller/**, edit the servi
 Now edit the two configuration-files and setup the MQTT-Broker-Address and the USB-Ports. Then you can start the services and watch the MQTT-Broker to receive the data from the MPPTs. The DPM86xx will not send values by its own. Please use the command **yourtopic/readdata** to request the measurements.
 
 # TODO
-At the moment the file vedirect2mqtt.py expects two MPPTs. If you only want to use one single MPPT please edit the python-script and comment lines 283 and 284 to not start the threads for MPPT2. You may comment lines 253 to 271, too, to reduce number of MQTT-messages then. Feel free to add some more code to use the config-file to do this.
+- Code is not ready for more than two MPPT. Please feel free to fork and update the code to support individual number of MPPTs
