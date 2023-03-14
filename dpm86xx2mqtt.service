@@ -1,0 +1,17 @@
+[Unit]
+Description=DPM86xx DC-Supply to MQTT-Broker
+After=syslog.target
+
+[Service]
+User=pi
+
+WorkingDirectory=/opt/pv_mqtt_controller/
+ExecStart=/usr/bin/python3 /opt/pv_mqtt_controller/dpm86xx2mqtt.py /opt/pv_mqtt_controller/dpm86xx2mqtt.cfg
+
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

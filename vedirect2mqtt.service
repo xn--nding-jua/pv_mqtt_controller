@@ -1,0 +1,17 @@
+[Unit]
+Description=VEDirect 2 MQTT-Broker
+After=syslog.target
+
+[Service]
+User=pi
+
+WorkingDirectory=/opt/pv_mqtt_controller/
+ExecStart=/usr/bin/python3 /opt/pv_mqtt_controller/vedirect2mqtt.py /opt/pv_mqtt_controller/vedirect2mqtt.cfg
+
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
