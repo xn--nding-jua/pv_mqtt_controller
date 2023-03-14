@@ -29,6 +29,7 @@ dpm86xx_id = config.get("dpm86xx", "id")
 dpm86xx_port = config.get("dpm86xx", "port")
 VOLTAGE_MAX = int(config.get("dpm86xx", "v_max"))
 CURRENT_MAX = int(config.get("dpm86xx", "i_max"))
+VOLTAGE_BAT = int(config.get("dpm86xx", "v_bat"))
 
 APPNAME = "dpm86xx2mqtt"
 
@@ -148,7 +149,10 @@ def dpm86xx_set_current(current):
     return(dpm86xx_value_write(F_CURRENT_SETTING, int(current * 1000)))
 
 def dpm86xx_set_power(power):
-    return(dpm86xx_set_current(power / dpm86xx_read_voltage()))
+    voltage = dpm86xx_read_voltage()
+    if (voltage < 5):
+        voltage = VOLTAGE_BAT
+    return(dpm86xx_set_current(power / voltage))
 
 def dpm86xx_set_output(state):
     if state in [0, 1]: return(dpm86xx_value_write(F_OUTPUT, str(state)))
