@@ -153,7 +153,7 @@ def mppt1_process_data():
         mppt1_values["Iload"] = int(mppt1_data["IL"]) / 1000
         mppt1_values["Pload"] = mppt1_values["Ubat"] * mppt1_values["Iload"]
         mppt1_values["Etoday"] = int(mppt1_data["H20"]) / 100
-        mppt1_values["Pmaxtoday"] = int(mppt1_data["H21"]) / 100
+        mppt1_values["Pmaxtoday"] = int(mppt1_data["H21"])
 
         if int(mppt1_data["CS"]) == 0:
             mppt1_values["State"] = "Off"
@@ -198,7 +198,7 @@ def mppt2_process_data():
         mppt2_values["Iload"] = int(mppt2_data["IL"]) / 1000
         mppt2_values["Pload"] = mppt2_values["Ubat"] * mppt2_values["Iload"]
         mppt2_values["Etoday"] = int(mppt2_data["H20"]) / 100
-        mppt2_values["Pmaxtoday"] = int(mppt2_data["H21"]) / 100
+        mppt2_values["Pmaxtoday"] = int(mppt2_data["H21"])
 
         if int(mppt2_data["CS"]) == 0:
             mppt2_values["State"] = "Off"
